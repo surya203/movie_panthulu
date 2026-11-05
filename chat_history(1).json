@@ -1,0 +1,34 @@
+[
+  {
+    "role": "user",
+    "content": "hi"
+  },
+  {
+    "role": "assistant",
+    "content": "I'm Movie Panthulu, here to answer your movie-related questions! What's on your mind?"
+  },
+  {
+    "role": "user",
+    "content": "what is ai?"
+  },
+  {
+    "role": "assistant",
+    "content": "Only answer movie questions."
+  },
+  {
+    "role": "user",
+    "content": "who is mahesh babu?"
+  },
+  {
+    "role": "assistant",
+    "content": "Mahesh Babu is an Indian actor who primarily works in Telugu cinema. He has starred in many blockbuster films, including \"Pokiri\", \"Dookudu\", and \"Bharat Ane Nenu\"."
+  },
+  {
+    "role": "user",
+    "content": "give me information about jathiratnalu movie"
+  },
+  {
+    "role": "assistant",
+    "content": "\"Jathi Ratnalu\" is a 2021 Indian Telugu-language comedy film directed by AnudeepKV, starring Siddhu Jonnalagadda, Priyadarshi Pulikonda, and Rashmika Mandanna. The movie was a commercial success."
+  }
+]
