@@ -1,5 +1,7 @@
 import json
+import threading
 
+import pyttsx3
 import streamlit as st
 import ollama
 
@@ -11,9 +13,23 @@ SYSTEM_PROMPT = (
     "If a question is not about movies, say you only answer movie questions."
 )
 
+def speak(text: str) -> None:
+    import pythoncom
+
+    pythoncom.CoInitialize()
+    try:
+        engine = pyttsx3.init()
+        engine.say(text)
+        engine.runAndWait()
+        engine.stop()
+    finally:
+        pythoncom.CoUninitialize()
+
+
 st.set_page_config(page_title="Movie Panthulu")
 st.title("Movie Panthulu")
 st.caption("Ask a movie question. Answers come from a local Ollama model (llama3.1:8b).")
+speak_answers = st.checkbox("Speak answers", value=True)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -45,6 +61,8 @@ if prompt := st.chat_input("Ask about a movie"):
         else:
             st.markdown(answer)
             st.session_state.messages.append({"role": "assistant", "content": answer})
+            if speak_answers:
+                threading.Thread(target=speak, args=(answer,), daemon=True).start()
 
 history_json = json.dumps(st.session_state.messages, indent=2)
 st.download_button(
